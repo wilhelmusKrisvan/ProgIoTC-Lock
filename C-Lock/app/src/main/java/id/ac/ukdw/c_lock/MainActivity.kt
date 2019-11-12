@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(i)
                 }.addOnFailureListener {
                     //FirebaseAuth.getInstance().createUserWithEmailAndPassword(edtEmail.text.toString(), edtPassword.text.toString())
-                    Toast.makeText(baseContext, "berhasil gagal login", Toast.LENGTH_LONG).show()
+                    Toast.makeText(baseContext, "gagal login", Toast.LENGTH_LONG).show()
                 }
 
         }
