@@ -52,6 +52,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "640822534650-5obnnk81eq9msef6ck7n04bdljuu0osb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.ac.ukdw.c_lock",
+            "certificate_hash": "a359b90652e60a068a1998cb33c0d5cf5c07003b"
+          }
+        },
+        {
           "client_id": "640822534650-nmvjmdrlknekj7kq83h1d6dapltg8sts.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
