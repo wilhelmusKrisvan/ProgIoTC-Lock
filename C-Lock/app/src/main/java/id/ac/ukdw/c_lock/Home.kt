@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.zxing.integration.android.IntentIntegrator
+import kotlinx.android.synthetic.main.ac_home.*
 import kotlinx.android.synthetic.main.activity_home.*
 
 class Home : AppCompatActivity() {
@@ -16,8 +17,8 @@ class Home : AppCompatActivity() {
         btn_scanaja()
     }
 
-    private fun btn_scanaja() {
-        btn_scan2.setOnClickListener {
+    private fun btn_scan() {
+        imgScan.setOnClickListener {
             initScan()
         }
     }
