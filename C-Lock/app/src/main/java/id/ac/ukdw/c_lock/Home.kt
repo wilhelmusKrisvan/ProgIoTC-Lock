@@ -14,7 +14,7 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ac_home)
 
-        btn_scanaja()
+        btn_scan()
     }
 
     private fun btn_scan() {
