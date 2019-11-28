@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteY="-51dp" />
 
     <Button
-        android:id="@+id/btn_scan"
+        android:id="@+id/btn_scan2"
         android:layout_width="158dp"
         android:layout_height="153dp"
         android:layout_gravity="center|center_vertical"

@@ -11,13 +11,13 @@ class Home : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.ac_home)
 
-        btn_scan()
+        btn_scanaja()
     }
 
-    private fun btn_scan() {
-        btn_scan.setOnClickListener {
+    private fun btn_scanaja() {
+        btn_scan2.setOnClickListener {
             initScan()
         }
     }
