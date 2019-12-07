@@ -38,6 +38,12 @@ class HomeActivity : AppCompatActivity() {
 
         ListData()
 
+        logout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            var i: Intent = Intent(this, LoginActivity::class.java)
+           startActivity(i)
+        }
+
     }
 
     private fun initScan() {
