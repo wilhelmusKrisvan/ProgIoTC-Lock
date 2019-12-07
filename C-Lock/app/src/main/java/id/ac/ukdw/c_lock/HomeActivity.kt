@@ -30,6 +30,12 @@ class HomeActivity : AppCompatActivity() {
 
         txtUsername.text = "Hello, ${FirebaseAuth.getInstance().currentUser?.email.toString()}"
 
+        logout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            var i: Intent = Intent(this, LoginActivity::class.java)
+            startActivity(i)
+        }
+
         ListData()
 
     }

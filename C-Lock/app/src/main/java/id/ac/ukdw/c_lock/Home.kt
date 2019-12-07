@@ -14,13 +14,6 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.active_home)
 
-        logout.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            var i: Intent = Intent(this, LoginActivity::class.java)
-//        i.putExtra()
-            startActivity(i)
-        }
-
     }
 
     private fun initScan() {
