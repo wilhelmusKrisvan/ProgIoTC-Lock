@@ -5,22 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.zxing.integration.android.IntentIntegrator
-import kotlinx.android.synthetic.main.ac_home.*
-import kotlinx.android.synthetic.main.activity_home.*
 
 class Home : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.ac_home)
+        setContentView(R.layout.active_home)
 
-        btn_scan()
-    }
-
-    private fun btn_scan() {
-        imgScan.setOnClickListener {
-            initScan()
-        }
     }
 
     private fun initScan() {

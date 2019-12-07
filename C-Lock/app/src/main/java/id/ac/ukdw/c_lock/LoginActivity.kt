@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.login.*
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,13 +18,12 @@ class MainActivity : AppCompatActivity() {
                 .signInWithEmailAndPassword(txtEmail.text.toString(), txtPass.text.toString())
                 .addOnSuccessListener  {
                     Toast.makeText(baseContext, "berhasil login", Toast.LENGTH_LONG).show()
-                    val i: Intent = Intent(baseContext, Home::class.java)
+                    val i: Intent = Intent(baseContext, HomeActivity::class.java)
                     startActivity(i)
+                    finish()
                 }.addOnFailureListener {
-                    //FirebaseAuth.getInstance().createUserWithEmailAndPassword(edtEmail.text.toString(), edtPassword.text.toString())
                     Toast.makeText(baseContext, "gagal login", Toast.LENGTH_LONG).show()
                 }
-
         }
     }
 
