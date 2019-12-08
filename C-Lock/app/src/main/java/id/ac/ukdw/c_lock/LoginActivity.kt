@@ -17,6 +17,7 @@ class LoginActivity : AppCompatActivity() {
             FirebaseAuth.getInstance()
                 .signInWithEmailAndPassword(txtEmail.text.toString(), txtPass.text.toString())
                 .addOnSuccessListener  {
+//                    delay(2000)
                     Toast.makeText(baseContext, "berhasil login", Toast.LENGTH_LONG).show()
                     val i: Intent = Intent(baseContext, HomeActivity::class.java)
                     startActivity(i)
