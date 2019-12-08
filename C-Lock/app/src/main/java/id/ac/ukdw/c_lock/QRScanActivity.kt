@@ -1,6 +1,7 @@
 package id.ac.ukdw.c_lock
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -34,22 +35,34 @@ class QRScanActivity : AppCompatActivity(), ZXingScannerView.ResultHandler, View
         initDefaultView()
 
         btnReset.setOnClickListener(this)
+        btnAction.setOnClickListener {
+            db = FirebaseDatabase.getInstance().getReference("Booking/20191202/$rid/status")
+            if(status.equals("0")){
+                db.setValue("1")
+                    .addOnSuccessListener {
+                        Toast.makeText(baseContext, "TERBUKA", Toast.LENGTH_LONG).show()
+                        val i: Intent = Intent(baseContext, HomeActivity::class.java)
+                        startActivity(i)
+                        finish()
+                    }
+            }else{
+                db.setValue("0")
+                    .addOnSuccessListener {
+                        Toast.makeText(baseContext, "TERTUTUP", Toast.LENGTH_LONG).show()
+                    }
+            }
+        }
 
     }
 
     fun ChangeData(rid: String, status: String){
-        db = FirebaseDatabase.getInstance().getReference("Booking/20191202/$rid")
-        if(status.equals("0")){
-            db.child("status").setValue("1")
-                .addOnSuccessListener {
-                    Toast.makeText(baseContext, "TERBUKA", Toast.LENGTH_LONG).show()
-            }
-        }else{
-            db.child("status").setValue("0")
-                .addOnSuccessListener {
-                Toast.makeText(baseContext, "TERTUTUP", Toast.LENGTH_LONG).show()
-            }
-        }
+
+    }
+
+    override fun onStart() {
+        mScannerView.startCamera()
+        doRequestPermission()
+        super.onStart()
     }
 
     private fun initScannerView() {
@@ -107,9 +120,6 @@ class QRScanActivity : AppCompatActivity(), ZXingScannerView.ResultHandler, View
             R.id.btnReset -> {
                 mScannerView.resumeCameraPreview(this)
                 initDefaultView()
-            }
-            R.id.btnAction -> {
-                ChangeData(rid, status)
             }
             else -> {
                 /* nothing to do in here */

@@ -34,7 +34,7 @@ class JadwalAdapter(val list:ArrayList<Jadwal>, val context: Context) : Recycler
             holder.btnBuka!!.setOnClickListener {
                 val i : Intent = Intent(context, QRScanActivity::class.java)
                 i.putExtra("rid", jadwal.rid)
-                i.putExtra("stat", "1")
+                i.putExtra("stat", "0")
                 context.startActivity(i)
             }
         } else if(jadwal.status.equals("1")){
@@ -43,7 +43,7 @@ class JadwalAdapter(val list:ArrayList<Jadwal>, val context: Context) : Recycler
             holder.btnTutup!!.setOnClickListener {
                 val i : Intent = Intent(context, QRScanActivity::class.java)
                 i.putExtra("rid", jadwal.rid)
-                i.putExtra("stat", "0")
+                i.putExtra("stat", "1")
                 context.startActivity(i)
             }
         }
