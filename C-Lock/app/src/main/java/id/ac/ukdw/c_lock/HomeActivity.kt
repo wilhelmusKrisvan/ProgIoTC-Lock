@@ -62,7 +62,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun ListData(){
-        dbJadwal = FirebaseDatabase.getInstance().getReference("Booking/$curDate")
+        dbJadwal = FirebaseDatabase.getInstance().getReference("Booking")
         dbJadwal.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
             }
@@ -70,9 +70,12 @@ class HomeActivity : AppCompatActivity() {
             override fun onDataChange(data: DataSnapshot) {
                 var child = data.children
                 child.forEach {
-                    val jadwal = it.getValue(Jadwal::class.java)
-                    if(jadwal!!.uid.equals(FirebaseAuth.getInstance().currentUser?.uid.toString())){
-                        list.add(jadwal!!)
+                    var childs = it.children
+                    childs.forEach{
+                        val jadwal = it.getValue(Jadwal::class.java)
+                        if(jadwal!!.uid.equals(FirebaseAuth.getInstance().currentUser?.uid.toString())){
+                            list.add(jadwal!!)
+                        }
                     }
                 }
             }

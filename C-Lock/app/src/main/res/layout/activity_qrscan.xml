@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QRScanActivity"
+    android:layout_gravity="center"
+    >
+
+
+    <FrameLayout
+        android:id="@+id/frame_layout_camera"
+        android:layout_width="match_parent"
+        android:layout_height="500dp" />
+
+    <TextView
+        android:id="@+id/txtValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="QR Code Value"
+        android:textSize="18sp"
+        android:layout_below="@id/frame_layout_camera"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAction"
+        android:layout_below="@id/txtValue"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnReset"
+        android:text="Reset"
+        android:layout_below="@id/btnAction"
+        android:layout_centerHorizontal="true"
+        />
+
+
+</RelativeLayout>

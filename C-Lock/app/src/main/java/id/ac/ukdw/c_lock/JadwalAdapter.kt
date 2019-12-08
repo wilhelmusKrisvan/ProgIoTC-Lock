@@ -1,6 +1,7 @@
 package id.ac.ukdw.c_lock
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,13 +32,19 @@ class JadwalAdapter(val list:ArrayList<Jadwal>, val context: Context) : Recycler
             holder.btnTutup!!.isClickable = false
             holder.btnTutup!!.visibility = View.INVISIBLE
             holder.btnBuka!!.setOnClickListener {
-
+                val i : Intent = Intent(context, QRScanActivity::class.java)
+                i.putExtra("rid", jadwal.rid)
+                i.putExtra("stat", "1")
+                context.startActivity(i)
             }
         } else if(jadwal.status.equals("1")){
             holder.btnBuka!!.isClickable = false
             holder.btnBuka!!.visibility = View.INVISIBLE
             holder.btnTutup!!.setOnClickListener {
-
+                val i : Intent = Intent(context, QRScanActivity::class.java)
+                i.putExtra("rid", jadwal.rid)
+                i.putExtra("stat", "0")
+                context.startActivity(i)
             }
         }
     }
