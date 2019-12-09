@@ -36,19 +36,22 @@ class QRScanActivity : AppCompatActivity(), ZXingScannerView.ResultHandler, View
 
         btnReset.setOnClickListener(this)
         btnAction.setOnClickListener {
-            db = FirebaseDatabase.getInstance().getReference("Booking/20191202/$rid/status")
+            db = FirebaseDatabase.getInstance().getReference("Booking/$curDate/$rid/status")
             if(status.equals("0")){
                 db.setValue("1")
                     .addOnSuccessListener {
-                        Toast.makeText(baseContext, "TERBUKA", Toast.LENGTH_LONG).show()
-                        val i: Intent = Intent(baseContext, HomeActivity::class.java)
+                        val i: Intent = Intent(baseContext, CountDownActivity::class.java)
+                        i.putExtra("stat", status)
                         startActivity(i)
                         finish()
                     }
             }else{
                 db.setValue("0")
                     .addOnSuccessListener {
-                        Toast.makeText(baseContext, "TERTUTUP", Toast.LENGTH_LONG).show()
+                        val i: Intent = Intent(baseContext, CountDownActivity::class.java)
+                        i.putExtra("stat", status)
+                        startActivity(i)
+                        finish()
                     }
             }
         }
@@ -103,14 +106,17 @@ class QRScanActivity : AppCompatActivity(), ZXingScannerView.ResultHandler, View
     }
 
     override fun handleResult(rawResult: Result) {
-        txtValue.text = rawResult?.text
-        if(txtValue.text.toString().equals(rid)){
+        if(rawResult?.text.equals(rid)){
+            txtValue.text = rawResult?.text
             btnAction.visibility= View.VISIBLE
             if(status.equals("0")){
                 btnAction.text = "BUKA"
             }else{
                 btnAction.text = "TUTUP"
             }
+        }
+        else{
+            txtValue.text = "NOT MATCH"
         }
         btnReset.visibility = View.VISIBLE
     }

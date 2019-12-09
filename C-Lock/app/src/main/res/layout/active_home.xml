@@ -13,7 +13,7 @@
         android:orientation="horizontal">
 
         <FrameLayout
-            android:layout_width="337dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,12 +46,12 @@
 
         <Button
             android:id="@+id/logout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="550dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="#03f8fc"
             android:text="Logout"
-            android:textSize="10sp"
-            android:background="@color/colorBelakang"/>
+            android:textSize="10sp" />
 
     </LinearLayout>
 
@@ -84,6 +84,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleRuang"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

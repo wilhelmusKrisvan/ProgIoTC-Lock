@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/ImageRiw"
             android:layout_width="100dp"
-            android:layout_height="125dp"
+            android:layout_height="150dp"
             app:srcCompat="@drawable/conference" />
 
         <TextView
@@ -44,7 +44,7 @@
             android:layout_toRightOf="@+id/ImageRiw"
             android:text="Ruangan"
             android:textColor="#FFFFFF"
-            android:textSize="15sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txtJadwal"

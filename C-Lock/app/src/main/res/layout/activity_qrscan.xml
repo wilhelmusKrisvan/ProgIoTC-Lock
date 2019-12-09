@@ -24,20 +24,25 @@
         android:layout_below="@id/frame_layout_camera"/>
 
     <Button
+        android:id="@+id/btnAction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnAction"
         android:layout_below="@id/txtValue"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#03f8fc"
+        android:textColor="@android:color/white" />
 
     <Button
+        android:id="@+id/btnReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnReset"
-        android:text="Reset"
         android:layout_below="@id/btnAction"
         android:layout_centerHorizontal="true"
-        />
+        android:background="#03f8fc"
+        android:text="Reset"
+        android:textColor="@android:color/white" />
 
 
 </RelativeLayout>

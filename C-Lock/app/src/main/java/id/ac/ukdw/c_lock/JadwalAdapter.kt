@@ -26,8 +26,8 @@ class JadwalAdapter(val list:ArrayList<Jadwal>, val context: Context) : Recycler
     override fun onBindViewHolder(holder: JadwalHolder, position: Int) {
         val jadwal = list.get(position)
         holder.id!!.text = jadwal.rid
-        holder.ruang!!.text = jadwal.lab
-        holder.jadwal!!.text = "Lab : ${jadwal.waktu}, jam ${jadwal.jamStart} - ${jadwal.jamEnd}"
+        holder.ruang!!.text = "Lab : ${jadwal.lab}"
+        holder.jadwal!!.text = "Sesi : ${jadwal.waktu} \n${jadwal.jamStart} - ${jadwal.jamEnd}"
         if(jadwal.status.equals("0")){
             holder.btnTutup!!.isClickable = false
             holder.btnTutup!!.visibility = View.INVISIBLE
@@ -37,7 +37,7 @@ class JadwalAdapter(val list:ArrayList<Jadwal>, val context: Context) : Recycler
                 i.putExtra("stat", "0")
                 context.startActivity(i)
             }
-        } else if(jadwal.status.equals("1")){
+        } else{
             holder.btnBuka!!.isClickable = false
             holder.btnBuka!!.visibility = View.INVISIBLE
             holder.btnTutup!!.setOnClickListener {
@@ -59,7 +59,7 @@ class JadwalAdapter(val list:ArrayList<Jadwal>, val context: Context) : Recycler
         init{
             id = view.findViewById(R.id.txtBook) as TextView
             ruang = view.findViewById(R.id.txtRuang) as TextView
-            jadwal = view.findViewById(R.id.txtRuang) as TextView
+            jadwal = view.findViewById(R.id.txtJadwal) as TextView
             btnBuka = view.findViewById(R.id.btnBuka) as Button
             btnTutup = view.findViewById(R.id.btnTutup) as Button
         }

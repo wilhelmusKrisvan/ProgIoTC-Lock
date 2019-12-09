@@ -19,7 +19,8 @@ class HomeActivity : AppCompatActivity() {
     var list: ArrayList<Jadwal> = ArrayList<Jadwal>()
     var jadwalAdapter =JadwalAdapter(list,this)
     var layoutManager = LinearLayoutManager(this)
-
+    lateinit var name: String
+    var email:String = FirebaseAuth.getInstance().currentUser?.email.toString()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.active_home)
@@ -28,41 +29,34 @@ class HomeActivity : AppCompatActivity() {
         recycleRuang.layoutManager = layoutManager
         recycleRuang.setHasFixedSize(true)
 
-        txtUsername.text = "Hello, ${FirebaseAuth.getInstance().currentUser?.email.toString()}"
+        txtUsername.text = "Hello, ${GetName(email)}"
 
         ListData()
 
         logout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             var i: Intent = Intent(this, LoginActivity::class.java)
-           startActivity(i)
+            startActivity(i)
+            finish()
         }
-
     }
 
-    private fun initScan() {
-        IntentIntegrator(this).initiateScan()
-
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-        if (result != null) {
-            if(result.contents==null){
-                Toast.makeText(this, "the data is empty", Toast.LENGTH_LONG).show()
-            }else{
-                var text : String = result.contents.toString()
-                Toast.makeText(this, text, Toast.LENGTH_LONG).show()
+    fun GetName(email: String):String{
+        var tampung:String = email.substring(0,email.indexOf("@"))
+        var tampung2:String = ""
+        for (i in tampung){
+            if (!i.isLetter()){
+                tampung2 = tampung2 + " "
             }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data)
-
+            else{
+                tampung2 = tampung2 + i
+            }
         }
-
+        return tampung2
     }
 
     fun ListData(){
-        dbJadwal = FirebaseDatabase.getInstance().getReference("Booking")
+        dbJadwal = FirebaseDatabase.getInstance().getReference("Booking/$curDate")
         dbJadwal.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
             }
@@ -70,15 +64,13 @@ class HomeActivity : AppCompatActivity() {
             override fun onDataChange(data: DataSnapshot) {
                 var child = data.children
                 child.forEach {
-                    var childs = it.children
-                    childs.forEach{
-                        val jadwal = it.getValue(Jadwal::class.java)
-                        if(jadwal!!.uid.equals(FirebaseAuth.getInstance().currentUser?.uid.toString())){
-                            list.add(jadwal!!)
-                        }
+                    val jadwal = it.getValue(Jadwal::class.java)
+                    if(jadwal!!.uid.equals(FirebaseAuth.getInstance().currentUser?.uid.toString())){
+                        list.add(jadwal!!)
                     }
                 }
             }
         })
+        jadwalAdapter.notifyDataSetChanged()
     }
 }
