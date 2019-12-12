@@ -55,37 +55,31 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/img_kls"
+    <ViewFlipper
+        android:id="@+id/img_flip"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328"
-        app:srcCompat="@drawable/asd" />
+        app:layout_constraintVertical_bias="0.328" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Daftar Kelas"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/img_kls"
-        app:layout_constraintEnd_toEndOf="@+id/img_kls"
-        app:layout_constraintHorizontal_bias="0.671"
-        app:layout_constraintStart_toStartOf="@+id/img_kls"
-        app:layout_constraintTop_toTopOf="@+id/img_kls"
-        app:layout_constraintVertical_bias="0.24" />
+        android:layout_height="wrap_content">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleRuang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        </com.google.android.material.tabs.TabLayout>
+    </androidx.viewpager.widget.ViewPager>
+
 
 </LinearLayout>

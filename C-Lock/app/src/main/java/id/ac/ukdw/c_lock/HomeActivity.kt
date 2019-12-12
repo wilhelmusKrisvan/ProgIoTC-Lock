@@ -3,8 +3,11 @@ package id.ac.ukdw.c_lock
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
+import android.widget.ViewFlipper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager.widget.ViewPager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.zxing.integration.android.IntentIntegrator
@@ -13,25 +16,26 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class HomeActivity : AppCompatActivity() {
-    lateinit var dbJadwal: DatabaseReference
-    var sdf = SimpleDateFormat("yyyyMMdd")
-    var curDate = sdf.format(Date())
-    var list: ArrayList<Jadwal> = ArrayList<Jadwal>()
-    var jadwalAdapter =JadwalAdapter(list,this)
-    var layoutManager = LinearLayoutManager(this)
+
+    lateinit var viewflip: ViewFlipper
     lateinit var name: String
     var email:String = FirebaseAuth.getInstance().currentUser?.email.toString()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.active_home)
+        var viewpage: ViewPager = findViewById(R.id.viewpager_main)
+        viewflip = findViewById(R.id.img_flip)
+        viewpage.adapter = PagerAdapter(supportFragmentManager)
+        tab_main.setupWithViewPager(viewpage)
 
-        recycleRuang.adapter = jadwalAdapter
-        recycleRuang.layoutManager = layoutManager
-        recycleRuang.setHasFixedSize(true)
+        var images: IntArray = intArrayOf(R.drawable.login, R.drawable.ruang,
+            R.drawable.jadwal)
+
+        for(image in images){
+            FlipImages(image)
+        }
 
         txtUsername.text = "Hello, ${GetName(email)}"
-
-        ListData()
 
         logout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
@@ -39,6 +43,18 @@ class HomeActivity : AppCompatActivity() {
             startActivity(i)
             finish()
         }
+    }
+
+    fun FlipImages(image: Int){
+        var imgView: ImageView = ImageView(this)
+        imgView.setBackgroundResource(image)
+
+        viewflip.addView(imgView)
+        viewflip.flipInterval = 3000
+        viewflip.isAutoStart = true
+
+        viewflip.setInAnimation(this, R.anim.righttoleft)
+        viewflip.setOutAnimation(this, R.anim.lefttoright)
     }
 
     fun GetName(email: String):String{
@@ -55,22 +71,4 @@ class HomeActivity : AppCompatActivity() {
         return tampung2
     }
 
-    fun ListData(){
-        dbJadwal = FirebaseDatabase.getInstance().getReference("Booking/$curDate")
-        dbJadwal.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-            }
-
-            override fun onDataChange(data: DataSnapshot) {
-                var child = data.children
-                child.forEach {
-                    val jadwal = it.getValue(Jadwal::class.java)
-                    if(jadwal!!.uid.equals(FirebaseAuth.getInstance().currentUser?.uid.toString())){
-                        list.add(jadwal!!)
-                    }
-                }
-            }
-        })
-        jadwalAdapter.notifyDataSetChanged()
-    }
 }
