@@ -53,7 +53,7 @@ class HomeActivity : AppCompatActivity() {
         viewflip.isAutoStart = true
 
         viewflip.setInAnimation(this, R.anim.righttoleft)
-        viewflip.setOutAnimation(this, R.anim.lefttoright)
+        viewflip.setOutAnimation(this, R.anim.righttoleft)
     }
 
     fun GetName(email: String):String{

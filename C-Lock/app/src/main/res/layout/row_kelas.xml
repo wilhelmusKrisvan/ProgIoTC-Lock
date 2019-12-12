@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10sp"
+    android:background="@drawable/itu"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -11,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/itu"
-        android:padding="15dp">
+        android:paddingStart="15dp"
+        android:paddingTop="5dp">
 
         <TextView
             android:id="@+id/txtBook"
@@ -19,12 +21,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
             android:layout_marginEnd="20dp"
-            android:layout_toEndOf="@+id/ImageRiw"
-            android:layout_toRightOf="@+id/ImageRiw"
             android:hint="~none~"
             android:text="ID Booking"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/txtRuang"
@@ -34,11 +34,9 @@
             android:layout_marginStart="160dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:layout_toEndOf="@+id/ImageRiw"
-            android:layout_toRightOf="@+id/ImageRiw"
             android:text="Ruangan"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/txtJadwal"
@@ -48,12 +46,10 @@
             android:layout_marginStart="160dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:layout_toEndOf="@+id/ImageRiw"
-            android:layout_toRightOf="@+id/ImageRiw"
             android:hint="Nama Rumah Sakit"
             android:text="Jadwal"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/btnBuka"
@@ -63,19 +59,17 @@
             android:layout_marginStart="160dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
-            android:layout_toEndOf="@+id/ImageRiw"
-            android:layout_toRightOf="@+id/ImageRiw"
             android:background="#03f8fc"
             android:text="BUKA"
             android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/btnTutup"
             android:layout_width="70dp"
             android:layout_height="38dp"
             android:layout_below="@+id/txtJadwal"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/btnBuka"
