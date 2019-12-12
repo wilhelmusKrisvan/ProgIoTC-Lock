@@ -10,6 +10,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:orientation="horizontal">
 
         <FrameLayout
@@ -46,11 +49,11 @@
 
         <Button
             android:id="@+id/logout"
-            android:layout_width="550dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#03f8fc"
-            android:text="Logout"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0"
+            android:background="@drawable/logout"
             android:textSize="10sp" />
 
     </LinearLayout>
@@ -59,6 +62,9 @@
         android:id="@+id/img_flip"
         android:layout_width="match_parent"
         android:layout_height="160dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

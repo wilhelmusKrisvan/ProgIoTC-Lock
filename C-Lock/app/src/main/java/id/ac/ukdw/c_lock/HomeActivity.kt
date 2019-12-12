@@ -28,8 +28,7 @@ class HomeActivity : AppCompatActivity() {
         viewpage.adapter = PagerAdapter(supportFragmentManager)
         tab_main.setupWithViewPager(viewpage)
 
-        var images: IntArray = intArrayOf(R.drawable.login, R.drawable.ruang,
-            R.drawable.jadwal)
+        var images: IntArray = intArrayOf(R.drawable.asd, R.drawable.ruang)
 
         for(image in images){
             FlipImages(image)
